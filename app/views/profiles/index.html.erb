@@ -1,0 +1,16 @@
+<div class = "jumbotron">
+  <div class = "row">
+    <% @profiles.each do |profile| %>
+      <div class = "col-md-6">
+       <p> <%= image_tag(profile.picture ,width: "100%") %> </p>
+      </div>
+      <div class = "col-md-6">
+       <p> <%= profile.name %> </p>
+       <p> <%= profile.location%> </p>
+       <p> <%= profile.bio%> </p>
+       <p> <%= link_to 'Edit', edit_profile_path(profile),class: "btn btn-danger" %> </p>
+      </div>
+    <% end %>
+</div>
+</div>
+

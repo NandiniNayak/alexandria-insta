@@ -1,0 +1,37 @@
+<div class="jumbotron">
+  <h1>Welcome to Instagram!</h1>
+  <p>Space to share photos and videos with your friends</p>
+  <p><a class="btn btn-primary btn-lg" href="/profiles/new" role="button">Create Profile</a></p>
+  <p><a class="btn btn-danger btn-lg" href="/posts/new" role="button">Poke to add a picture</a></p>
+</div>
+
+<% @posts.each do |post| %>
+  <div class = "jumbotron">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          
+          <%= image_tag(post.profile.picture , class: "profile-pic",width: "15%" , height: "15%") %>
+          <%= post.profile.name %>
+          
+        </h3>
+      </div>
+      <div class="panel-body">
+        <p><%= post.status %></p>
+        <p><%= post.description %></p>
+        <p><%= post.location %></p>
+        <p><%= image_tag(post.picture , width: "80%", height: "80%") %></p>
+        <!--piece of code to display the like button-->
+        <% if current_user %>
+              <!--only if signed in like the post-->
+              <%= link_to like_post_path(post), method: :put do %>
+                <%= current_user.voted_as_when_voted_for(post) == true ? icon("heart fa-4x") : icon("heart-o fa-4x")%>
+              <% end %>
+        <% else %>
+            <!--do nothing-->
+            <%= icon("heart-o fa-4x") %>
+        <% end  %>
+      </div>
+    </div>
+  </div>
+<% end %>

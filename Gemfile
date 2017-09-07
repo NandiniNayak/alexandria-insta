@@ -10,6 +10,7 @@ end
 gem 'rails', '~> 5.0.1'
 gem 'bootstrap-sass'
 gem 'devise'
+gem 'acts_as_votable'
 gem 'simple_form'
 gem 'font-awesome-sass'
 gem 'country_select'
